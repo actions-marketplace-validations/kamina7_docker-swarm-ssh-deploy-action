@@ -15,14 +15,14 @@ fi
 if [ ${INPUT_REMOTE_HOST#"ssh://"} != "$INPUT_REMOTE_HOST" ]; then
     SSH_HOST_W_USER=${INPUT_REMOTE_HOST#"ssh://"}
     SSH_HOST=${SSH_HOST_W_USER#*@}
+    export SSHPASS=${INPUT_SSH_KEY}
     mkdir -p ~/.ssh
     ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -P ""
-    echo "$INPUT_SSH_KEY" > ~/.ssh/host_key
     
     echo "Host *" > ~/.ssh/config
     echo "    StrictHostKeyChecking no"  >> ~/.ssh/config
     
-    sshpass -f ~/.ssh/host_key ssh-copy-id ${SSH_HOST_W_USER}
+    sshpass -e ssh-copy-id ${SSH_HOST_W_USER}
 
     
 fi
