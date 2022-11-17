@@ -10,7 +10,7 @@ fi
 if [ ${INPUT_REMOTE_HOST#"ssh://"} != "$INPUT_REMOTE_HOST" ]; then
     SSH_HOST=${INPUT_REMOTE_HOST#"ssh://"}
     SSH_HOST=${SSH_HOST#*@}
-
+    mkdir -p ~`/.ssh
     $(echo $INPUT_SSH_KEY) > ~/.ssh/host_key
     ssh-copy-id -i ~/.ssh/host_key ${SSH_HOST}
     
