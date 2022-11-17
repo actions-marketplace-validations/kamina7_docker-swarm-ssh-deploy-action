@@ -18,8 +18,8 @@ if [ ${INPUT_REMOTE_HOST#"ssh://"} != "$INPUT_REMOTE_HOST" ]; then
     mkdir -p ~/.ssh
     ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -P ""
     echo "$INPUT_SSH_KEY" > ~/.ssh/host_key
-    ssh -o StrictHostKeyChecking=no ${SSH_HOST_W_USER} uptime
     sshpass -f ~/.ssh/host_key ssh-copy-id ${SSH_HOST_W_USER}
+    ssh -o StrictHostKeyChecking=no ${SSH_HOST_W_USER} uptime
     
 fi
 
