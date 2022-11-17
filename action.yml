@@ -5,7 +5,7 @@ inputs:
   remote_host:
     description: Docker host to connect to
     required: true
-  input_ssh_key:
+  ssh_key:
     description: SSH key for the server
     required: true
 runs:
