@@ -6,6 +6,11 @@ if [ -z "$INPUT_REMOTE_HOST" ]; then
     exit 1
 fi
 
+if [ -z "$INPUT_SSH_KEY" ]; then
+    echo "Input key is required!"
+    exit 1
+fi
+
 # Extra handling for SSH-based connections.
 if [ ${INPUT_REMOTE_HOST#"ssh://"} != "$INPUT_REMOTE_HOST" ]; then
     SSH_HOST=${INPUT_REMOTE_HOST#"ssh://"}
