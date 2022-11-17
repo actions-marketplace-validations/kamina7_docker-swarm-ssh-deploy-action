@@ -8,6 +8,7 @@ LABEL "com.github.actions.description"="Deploy a stack to a remote Docker swarm.
 LABEL "com.github.actions.icon"="upload-cloud"
 LABEL "com.github.actions.color"="blue"
 
+RUN apk --no-cache add sshpass
 RUN apk --no-cache add openssh-client
 
 COPY entrypoint.sh /entrypoint.sh
